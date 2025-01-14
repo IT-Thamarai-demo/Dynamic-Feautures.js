@@ -3,80 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="MyLibrary.js is a lightweight JavaScript library for web applications with features like device info, maps, animations, and more.">
+  <meta name="description" content="MyLibrary.js is a lightweight and easy-to-use JavaScript library packed with features like device info, maps, animations, and more.">
   <meta name="keywords" content="MyLibrary.js, JavaScript library, web development, interactive features, frontend tools">
   <meta name="author" content="ThamaraiKannan">
-  <meta property="og:title" content="MyLibrary.js - Enhance Your Web Applications">
-  <meta property="og:description" content="Lightweight JavaScript library with features like maps, animations, and dynamic greetings.">
-  <meta property="og:url" content=" https://it-thamarai-demo.github.io/Dynamic-Feautures.js/">
-  <meta property="og:type" content="js.webp">
+  <meta property="og:title" content="MyLibrary.js - Supercharge Your Web Projects">
+  <meta property="og:description" content="A JavaScript library to enhance your web apps with animations, maps, greetings, and more.">
+  <meta property="og:url" content="https://it-thamarai-demo.github.io/Dynamic-Feautures.js/">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/IT-Thamarai-demo/Dynamic-Feautures.js/demo.js"></script>
-
+  <title>MyLibrary.js - Demo Page</title>
+  <style>
+    #map {
+      height: 300px;
+      width: 100%;
+      margin: 20px 0;
+    }
+    #particles-js {
+      height: 200px;
+      width: 100%;
+      margin: 20px 0;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    p, button {
+      text-align: center;
+      margin: 10px auto;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    dialog {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <h1>MyLibrary Demo Page</h1>
+  <h1>Welcome to MyLibrary.js</h1>
+  <p>This demo showcases the features of MyLibrary.js, a lightweight library to enhance your web applications with dynamic features.</p>
 
-  <h2 id="dimensions"></h2>
-  <h2 id="deviceInfo"></h2>
-  <h2 id="batteryInfo"></h2>
-  <h2 id="greeting"></h2>
+  <h2>Device Information</h2>
+  <p id="dimensions">Screen dimensions will appear here.</p>
+  <p id="deviceInfo">Device details will appear here.</p>
 
- 
-  <button onclick="myLibrary.launchConfetti()">Launch Confetti</button>
+  <h2>Battery Status</h2>
+  <p id="batteryInfo">Battery information will appear here.</p>
+
+  <h2>Dynamic Greetings</h2>
+  <p id="greeting">A greeting message will appear here based on the time of day.</p>
 
   <h2>Interactive Map</h2>
+  <p>Below is an example of an interactive map powered by MyLibrary.js:</p>
   <div id="map"></div>
 
   <h2>Typing Animation</h2>
+  <p>Experience a dynamic typing animation below:</p>
   <div id="typingAnimation"></div>
 
   <h2>Particles Effect</h2>
-  <div id="particles-js" style="background-color: black;"></div>
+  <p>Enjoy the interactive particles effect below:</p>
+  <div id="particles-js"></div>
 
+  <h2>Try These Actions</h2>
+  <button onclick="myLibrary.launchConfetti()">Launch Confetti 🎉</button>
+  <button onclick="myLibrary.scrollToTop()">Scroll to Top ⬆️</button>
+
+  <h2>Dialog Box</h2>
+  <p>Click the button below to open a customizable dialog box:</p>
   <dialog id="myDialog">
-    <p>This is a dialog box!</p>
-    <button onclick="myLibrary.closeDialog('#myDialog')">Close</button>
+    <p>This is a dialog box created with MyLibrary.js!</p>
+    <button onclick="myLibrary.closeDialog('#myDialog')">Close Dialog</button>
   </dialog>
   <button onclick="myLibrary.openDialog('#myDialog')">Open Dialog</button>
-  <button onclick="myLibrary.scrollToTop()">Scroll to Top</button>
 
   <script>
-    // Initialize library styles
+    // Load styles and initialize features
     myLibrary.loadStyles();
 
-    // Call library functions after the page has loaded
     document.addEventListener("DOMContentLoaded", () => {
-      // Display device dimensions
+      // Display screen dimensions
       myLibrary.displayDimensions("#dimensions");
 
-
-      //Notiications
-      myLibrary.messege("hai","developer","image ur want ")
-
-      // Display device info
+      // Show device info
       myLibrary.displayDeviceInfo("#deviceInfo");
 
-      // Display battery info
+      // Display battery status
       myLibrary.displayBatteryInfo("#batteryInfo");
 
-      // Display greeting
+      // Show dynamic greeting
       myLibrary.displayGreeting("#greeting");
 
-      // Initialize map
+      // Initialize the interactive map
       myLibrary.initMap("map");
 
-      // Initialize typing animation
-      myLibrary.initTypingAnimation("#typingAnimation", ["Hello, World!", "Welcome to MyLibrary!", "Enjoy the demo!"]);
+      // Start typing animation
+      myLibrary.initTypingAnimation("#typingAnimation", [
+        "Hello there!",
+        "Welcome to MyLibrary.js!",
+        "Enjoy exploring the features!"
+      ]);
 
       // Initialize particles effect
       myLibrary.initParticles("particles-js");
 
-      // Handle visibility change
+      // Notify users on visibility change
       myLibrary.handleVisibilityChange();
     });
   </script>
