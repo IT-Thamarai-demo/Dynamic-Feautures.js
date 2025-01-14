@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage -->
+  <url>
+    <loc>https://it-thamarai-demo.github.io/Dynamic-Feautures.js/</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Documentation -->
+  <url>
+    <loc>https://github.com/IT-Thamarai-demo/Dynamic-Feautures.js/blob/main/MyLibrary_Documentation.m</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Live Demo -->
+  <url>
+    <loc>https://it-thamarai-demo.github.io/Dynamic-Feautures.js/</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- GitHub Repository -->
+  <url>
+    <loc>https://github.com/IT-Thamarai-demo/Dynamic-Feautures.js</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Features -->
+  <url>
+    <loc>https://yourwebsite.com/features</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact -->
+  <url>
+    <loc>https://yourwebsite.com/contact</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+</urlset>
