@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyLibrary Demo</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="demo.js"></script>
+</head>
+<body>
+  <h1>MyLibrary Demo Page</h1>
+
+  <div id="dimensions"></div>
+  <div id="deviceInfo"></div>
+  <div id="batteryInfo"></div>
+  <div id="greeting"></div>
+
+  <button onclick="myLibrary.scrollToTop()">Scroll to Top</button>
+  <button onclick="myLibrary.launchConfetti()">Launch Confetti</button>
+
+  <h2>Interactive Map</h2>
+  <div id="map"></div>
+
+  <h2>Typing Animation</h2>
+  <div id="typingAnimation"></div>
+
+  <h2>Particles Effect</h2>
+  <div id="particles-js" style="width: 100%; height: 300px;"></div>
+
+  <dialog id="myDialog">
+    <p>This is a dialog box!</p>
+    <button onclick="myLibrary.closeDialog('#myDialog')">Close</button>
+  </dialog>
+  <button onclick="myLibrary.openDialog('#myDialog')">Open Dialog</button>
+
+  <script>
+    // Initialize library styles
+    myLibrary.loadStyles();
+
+    // Call library functions after the page has loaded
+    document.addEventListener("DOMContentLoaded", () => {
+      // Display device dimensions
+      myLibrary.displayDimensions("#dimensions");
+
+      // Display device info
+      myLibrary.displayDeviceInfo("#deviceInfo");
+
+      // Display battery info
+      myLibrary.displayBatteryInfo("#batteryInfo");
+
+      // Display greeting
+      myLibrary.displayGreeting("#greeting");
+
+      // Initialize map
+      myLibrary.initMap("map");
+
+      // Initialize typing animation
+      myLibrary.initTypingAnimation("#typingAnimation", ["Hello, World!", "Welcome to MyLibrary!", "Enjoy the demo!"]);
+
+      // Initialize particles effect
+      myLibrary.initParticles("particles-js");
+
+      // Handle visibility change
+      myLibrary.handleVisibilityChange();
+    });
+  </script>
+</body>
+</html>
