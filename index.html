@@ -3,13 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MyLibrary Demo</title>
+  <meta name="description" content="MyLibrary.js is a lightweight JavaScript library for web applications with features like device info, maps, animations, and more.">
+  <meta name="keywords" content="MyLibrary.js, JavaScript library, web development, interactive features, frontend tools">
+  <meta name="author" content="ThamaraiKannan">
+  <meta property="og:title" content="MyLibrary.js - Enhance Your Web Applications">
+  <meta property="og:description" content="Lightweight JavaScript library with features like maps, animations, and dynamic greetings.">
+  <meta property="og:url" content=" https://it-thamarai-demo.github.io/Dynamic-Feautures.js/">
+  <meta property="og:type" content="js.webp">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script src="demo.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/IT-Thamarai-demo/Dynamic-Feautures.js/demo.js"></script>
+
 </head>
 <body>
   <h1>MyLibrary Demo Page</h1>
@@ -29,7 +36,7 @@
   <div id="typingAnimation"></div>
 
   <h2>Particles Effect</h2>
-  <div id="particles-js" style="width: 100%; height: 300px;"></div>
+  <div id="particles-js" style="background-color: black;"></div>
 
   <dialog id="myDialog">
     <p>This is a dialog box!</p>
@@ -45,6 +52,10 @@
     document.addEventListener("DOMContentLoaded", () => {
       // Display device dimensions
       myLibrary.displayDimensions("#dimensions");
+
+
+      //Notiications
+      myLibrary.messege("hai","developer","image ur want ")
 
       // Display device info
       myLibrary.displayDeviceInfo("#deviceInfo");
