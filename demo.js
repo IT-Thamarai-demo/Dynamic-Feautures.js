@@ -44,6 +44,63 @@
       document.head.appendChild(style);
     },
 
+    // Lazy-load external library
+    lazyLoadScript: function (src, callback) {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = callback;
+      document.head.appendChild(script);
+    },
+
+    // Launch confetti (lazy-load canvas-confetti)
+    launchConfetti: function () {
+      this.lazyLoadScript(
+        "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js",
+        () => {
+          const duration = 2000;
+          const animationEnd = Date.now() + duration;
+
+          const interval = setInterval(() => {
+            if (Date.now() > animationEnd) clearInterval(interval);
+            confetti({
+              particleCount: 100,
+              spread: 360,
+              origin: { x: Math.random(), y: Math.random() },
+            });
+          }, 250);
+        }
+      );
+    },
+
+    // Initialize typing animation (lazy-load Typed.js)
+    initTypingAnimation: function (selector, strings, typeSpeed = 70, loop = true) {
+      this.lazyLoadScript("https://cdn.jsdelivr.net/npm/typed.js@2.0.12", () => {
+        new Typed(selector, { strings, typeSpeed, loop });
+      });
+    },
+
+    // Initialize particles effect (lazy-load particles.js)
+    initParticles: function (elementId) {
+      this.lazyLoadScript("https://cdn.jsdelivr.net/npm/particles.js", () => {
+        particlesJS(elementId, {
+          particles: {
+            number: { value: 100, density: { enable: true, value_area: 800 } },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5, random: true },
+            size: { value: 3, random: true },
+            links: { enable: true, distance: 150, color: '#ffffff' },
+            move: { enable: true, speed: 2, out_mode: 'out' },
+          },
+          interactivity: {
+            events: {
+              onhover: { enable: true, mode: 'repulse' },
+              onclick: { enable: true, mode: 'push' },
+            },
+          },
+        });
+      });
+    },
+
     // Notification API
     messege: function (title, body, icon) {
       Notification.requestPermission().then((res) => {
@@ -112,11 +169,6 @@
       }
     },
 
-    // Typing animation using Typed.js
-    initTypingAnimation: function (selector, strings, typeSpeed = 70, loop = true) {
-      new Typed(selector, { strings, typeSpeed, loop });
-    },
-
     // Vibration function
     vibrate: function (ms) {
       navigator.vibrate(ms);
@@ -171,39 +223,27 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     },
 
-    // Launch confetti
-    launchConfetti: function () {
-      const duration = 2000;
-      const animationEnd = Date.now() + duration;
-
-      const interval = setInterval(() => {
-        if (Date.now() > animationEnd) clearInterval(interval);
-        confetti({
-          particleCount: 100,
-          spread: 360,
-          origin: { x: Math.random(), y: Math.random() },
-        });
-      }, 250);
+    // Load and play video
+    loadVideo: function (videoUrl, containerId) {
+      const container = document.getElementById(containerId);
+      if (container) {
+        const video = document.createElement('video');
+        video.src = videoUrl;
+        video.controls = true;
+        video.style.width = '100%';
+        container.appendChild(video);
+      }
     },
 
-    // Initialize particles.js
-    initParticles: function (elementId) {
-      particlesJS(elementId, {
-        particles: {
-          number: { value: 100, density: { enable: true, value_area: 800 } },
-          shape: { type: 'circle' },
-          opacity: { value: 0.5, random: true },
-          size: { value: 3, random: true },
-          links: { enable: true, distance: 150, color: '#ffffff' },
-          move: { enable: true, speed: 2, out_mode: 'out' },
-        },
-        interactivity: {
-          events: {
-            onhover: { enable: true, mode: 'repulse' },
-            onclick: { enable: true, mode: 'push' },
-          },
-        },
-      });
+    // Load and play audio
+    loadAudio: function (audioUrl, containerId) {
+      const container = document.getElementById(containerId);
+      if (container) {
+        const audio = document.createElement('audio');
+        audio.src = audioUrl;
+        audio.controls = true;
+        container.appendChild(audio);
+      }
     },
   };
 

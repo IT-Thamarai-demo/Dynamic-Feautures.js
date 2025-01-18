@@ -96,7 +96,19 @@
     }
   });
   ```
+### 11. **Load Video Functionalities**
+- **Functionality**: Loads and controls video playback based on the given HTML video element ID.
+- **Usage**:
+  ```javascript
+  myLibrary.loadVideo("#videoId");
 
+### 12. **Load Audio Functionalities**
+- **Functionality**: Loads and controls audio playback based on the given HTML audio element ID.
+- **Usage**:
+  ```javascript
+  myLibrary.loadAudio("#audioId");
+
+  
 ---
 
 ## Installation
@@ -112,6 +124,7 @@ For features like maps, animations, and particles, include the respective depend
 
 ### Step 3: Initialize Features
 Ensure features are initialized after the DOM is fully loaded:
+
 ```javascript
 document.addEventListener("DOMContentLoaded", () => {
   myLibrary.displayDimensions("#dimensions");
@@ -119,8 +132,15 @@ document.addEventListener("DOMContentLoaded", () => {
   myLibrary.displayBatteryInfo("#batteryInfo");
   myLibrary.displayGreeting("#greeting");
   myLibrary.initMap("map");
+
   myLibrary.initTypingAnimation("#typingElement", ["Welcome!", "Enjoy the experience!"]);
+
+  // New features added
+  myLibrary.loadVideo("#videoId");
+  myLibrary.loadAudio("#audioId");
+  myLibrary.launchConfetti();  // Trigger confetti effect
 });
+
 ```
 
 ---
@@ -136,26 +156,23 @@ document.addEventListener("DOMContentLoaded", () => {
 <div id="typingElement"></div>
 <div id="map" style="height: 300px; width: 100%;"></div>
 <div id="particles-js"></div>
+
+<!-- New Video Element -->
+<video id="videoId" width="320" height="240" controls>
+  <source src="path/to/your/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<!-- New Audio Element -->
+<audio id="audioId" controls>
+  <source src="path/to/your/audio.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<!-- Confetti Button -->
 <button id="confettiButton">Launch Confetti</button>
+
 ```
-
-### JavaScript Example
-```javascript
-document.addEventListener("DOMContentLoaded", () => {
-  myLibrary.displayDimensions("#dimensions");
-  myLibrary.displayDeviceInfo("#deviceInfo");
-  myLibrary.displayBatteryInfo("#batteryInfo");
-  myLibrary.displayGreeting("#greeting");
-  myLibrary.initTypingAnimation("#typingElement", ["Welcome!", "Enjoy the experience!"]);
-  myLibrary.initMap("map");
-  myLibrary.initParticles("particles-js");
-
-  document.getElementById("confettiButton").addEventListener("click", () => {
-    myLibrary.launchConfetti();
-  });
-});
-```
-
 ---
 
 ## Resources

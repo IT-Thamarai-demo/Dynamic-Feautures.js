@@ -6,6 +6,7 @@
   <meta name="description" content="MyLibrary.js is a lightweight and easy-to-use JavaScript library packed with features like device info, maps, animations, and more.">
   <meta name="keywords" content="MyLibrary.js, JavaScript library, web development, interactive features, frontend tools">
   <meta name="author" content="ThamaraiKannan">
+  <link rel="shortcut icon" href="js.webp" type="image/x-icon">
   <meta property="og:title" content="MyLibrary.js - Supercharge Your Web Projects">
   <meta property="og:description" content="A JavaScript library to enhance your web apps with animations, maps, greetings, and more.">
   <meta property="og:url" content="https://it-thamarai-demo.github.io/Dynamic-Feautures.js/">
@@ -92,6 +93,14 @@
   </dialog>
   <button onclick="myLibrary.openDialog('#myDialog')">Open Dialog</button>
 
+  <h2>Load Video</h2>
+  <p>Below is an example of loading a video dynamically:</p>
+  <div id="videoContainer"></div>
+
+  <h2>Load Audio</h2>
+  <p>Below is an example of loading an audio file dynamically:</p>
+  <div id="audioContainer"></div>
+
   <script>
     // Load styles and initialize features
     myLibrary.loadStyles();
@@ -124,6 +133,12 @@
 
       // Notify users on visibility change
       myLibrary.handleVisibilityChange();
+
+      // Load video dynamically
+      myLibrary.loadVideo("https://www.w3schools.com/html/movie.mp4", "videoContainer");
+
+      // Load audio dynamically
+      myLibrary.loadAudio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", "audioContainer");
     });
   </script>
 </body>
