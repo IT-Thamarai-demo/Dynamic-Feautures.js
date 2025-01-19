@@ -196,6 +196,22 @@ Contributions are welcome! Submit issues or pull requests on the [GitHub reposit
 - **Typed.js**: Typing animations
 - **Particles.js**: Particle effects
 
+
+## 📣 Stay Updated & Contribute
+
+We’d love for you to stay updated and contribute to the project! By watching this repository, you’ll receive notifications for all discussions, pull requests, and issues.
+
+### How to Watch:
+1. Click the **Watch** button at the top right of the repository page.
+2. Select **All Activity** to get notifications for all updates or **Participating** to only get notified when you are involved.
+
+### Why Watch?
+- **Be notified** when new issues, pull requests, or discussions are created.
+- **Contribute** by knowing when help is needed, including "good first issues" and other tasks.
+- **Stay in the loop** about the latest project updates, releases, and announcements.
+
+We appreciate your interest and contributions! 🙌
+
 ---
 
 For further assistance, refer to the [GitHub repository documentation](https://github.com/IT-Thamarai-demo/Dynamic-Feautures.js).
