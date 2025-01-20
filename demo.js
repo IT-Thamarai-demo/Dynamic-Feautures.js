@@ -2,6 +2,13 @@
   // Main library object
   const myLibrary = {
     // Load default styles for the library
+    lazyLoadCSS: function (href) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
+    },
+    
     loadStyles: function () {
       const style = document.createElement('style');
       style.textContent = `
@@ -56,12 +63,7 @@
       document.head.appendChild(script);
     },
 
-    lazyLoadCSS: function (href) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = href;
-      document.head.appendChild(link);
-    },
+   
 
     // Launch confetti (lazy-load canvas-confetti)
     launchConfetti: function () {
