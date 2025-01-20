@@ -7,8 +7,8 @@
       link.rel = 'stylesheet';
       link.href = href;
       document.head.appendChild(link);
-    },
-    
+  },
+
     loadStyles: function () {
       const style = document.createElement('style');
       style.textContent = `
