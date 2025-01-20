@@ -40,6 +40,10 @@
         dialog::backdrop {
           background: rgba(0, 0, 0, 0.5);
         }
+        video, audio {
+          max-width: 100%;
+          border-radius: 8px;
+        }
       `;
       document.head.appendChild(style);
     },
@@ -50,6 +54,13 @@
       script.src = src;
       script.onload = callback;
       document.head.appendChild(script);
+    },
+
+    lazyLoadCSS: function (href) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = href;
+      document.head.appendChild(link);
     },
 
     // Launch confetti (lazy-load canvas-confetti)
@@ -176,27 +187,27 @@
 
     // Leaflet map with user location
     initMap: function (mapId) {
-      const mapElement = document.getElementById(mapId);
-      if (mapElement) {
-        mapElement.style.border = "2px solid #007BFF";
-        mapElement.style.borderRadius = "10px";
-        mapElement.style.margin = "20px auto";
-      }
-
-      const map = L.map(mapId);
-      if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-          const { latitude, longitude } = position.coords;
-          map.setView([latitude, longitude], 15);
+      this.lazyLoadCSS("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"); // Load Leaflet CSS
+      this.lazyLoadScript("https://unpkg.com/leaflet@1.9.4/dist/leaflet.js", () => {
+        const mapElement = document.getElementById(mapId);
+        if (mapElement) {
+          const map = L.map(mapId).setView([51.505, -0.09], 13); // Default location
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors',
+            attribution: 'Map data © OpenStreetMap contributors',
           }).addTo(map);
-          const marker = L.marker([latitude, longitude]).addTo(map);
-          marker.bindPopup("<b>Your Location ❤️</b>").openPopup();
-        });
-      } else {
-        alert('Geolocation is not supported by your browser.');
-      }
+
+          if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition((position) => {
+              const { latitude, longitude } = position.coords;
+              map.setView([latitude, longitude], 15);
+              L.marker([latitude, longitude])
+                .addTo(map)
+                .bindPopup('You are here! 📍')
+                .openPopup();
+            });
+          }
+        }
+      });
     },
 
     // Show/close dialog
@@ -221,7 +232,30 @@
     // Scroll to top
     scrollToTop: function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    },
+
+    // Load and play video
+    loadVideo: function (videoUrl, containerId) {
+      const container = document.getElementById(containerId);
+      if (container) {
+        const video = document.createElement('video');
+        video.src = videoUrl;
+        video.controls = true;
+        video.style.width = '100%';
+        container.appendChild(video);
+      }
+    },
+
+    // Load and play audio
+    loadAudio: function (audioUrl, containerId) {
+      const container = document.getElementById(containerId);
+      if (container) {
+        const audio = document.createElement('audio');
+        audio.src = audioUrl;
+        audio.controls = true;
+        container.appendChild(audio);
+      }
+    },
   };
 
   // Export the library
