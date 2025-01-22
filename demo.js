@@ -44,6 +44,12 @@
             max-width: 100%;
             border-radius: 8px;
           }
+          #greeting
+          {
+            color:blue;
+          }
+          
+
         `;
         document.head.appendChild(style);
       },
