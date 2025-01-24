@@ -216,7 +216,13 @@ Contributions are welcome! Submit issues or pull requests on the [GitHub reposit
 
 ## 📣 Stay Updated & Contribute
 
-We’d love for you to stay updated and contribute to the project! By watching this repository, you’ll receive notifications for all discussions, pull requests, and issues.
+![Author Image](https://via.placeholder.com/100)  
+**Author**: Thamarai Kannan  
+**GitHub**: [Thamarai Kannan](https://github.com/IT-Thamarai-demo)  
+
+![Contributor Image](https://via.placeholder.com/100)  
+**Contributor**: Ragul  
+**GitHub**: [Ragul](https://github.com/Ragul32111)
 
 ### How to Watch:
 1. Click the **Watch** button at the top right of the repository page.
