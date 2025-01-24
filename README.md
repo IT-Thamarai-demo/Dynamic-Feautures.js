@@ -108,6 +108,23 @@
   ```javascript
   myLibrary.loadAudio("#audioId");
 
+### 13. **Toastify Js Integration**
+
+Use the `Toasify` method to display toast notifications with [Toastify.js](https://github.com/apvarun/toastify-js).
+
+```javascript
+document.getElementById("showToastBtn").addEventListener("click", () => {
+  // Call the Toasify method
+  myLibrary.Toasify({
+    message: "This is a sample toast notification!",
+    duration: 5000, // Display the toast for 5 seconds
+    gravity: "top", // Display toast at the top
+    position: "right", // Display toast on the right
+    backgroundColor: "#FF5733" // Custom background color
+  });
+});
+```
+  
   
 ---
 
