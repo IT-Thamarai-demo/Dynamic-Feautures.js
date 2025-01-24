@@ -216,11 +216,11 @@ Contributions are welcome! Submit issues or pull requests on the [GitHub reposit
 
 ## 📣 Stay Updated & Contribute
 
-![Author Image](https://via.placeholder.com/100)  
+![Author Image](https://avatars.githubusercontent.com/u/120456321?v=4)  
 **Author**: Thamarai Kannan  
 **GitHub**: [Thamarai Kannan](https://github.com/IT-Thamarai-demo)  
 
-![Contributor Image](https://via.placeholder.com/100)  
+![Contributor Image](https://avatars.githubusercontent.com/u/144410624?v=4)  
 **Contributor**: Ragul  
 **GitHub**: [Ragul](https://github.com/Ragul32111)
 
