@@ -44,10 +44,9 @@
             max-width: 100%;
             border-radius: 8px;
           }
-          #greeting
-          {
-            color:blue;
-          }
+         #greeting {
+          color: blue;
+           }
           
 
         `;
@@ -67,34 +66,14 @@
         link.rel = 'stylesheet';
         link.href = href;
         document.head.appendChild(link);
-      },
-  
-      // Launch confetti (lazy-load canvas-confetti)
-      launchConfetti: function () {
-        this.lazyLoadScript(
-          "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js",
-          () => {
-            const duration = 2000;
-            const animationEnd = Date.now() + duration;
-  
-            const interval = setInterval(() => {
-              if (Date.now() > animationEnd) clearInterval(interval);
-              confetti({
-                particleCount: 100,
-                spread: 360,
-                origin: { x: Math.random(), y: Math.random() },
-              });
-            }, 250);
-          }
-        );
-      },
-  
+     }, 
       // Initialize typing animation (lazy-load Typed.js)
       initTypingAnimation: function (selector, strings, typeSpeed = 70, loop = true) {
         this.lazyLoadScript("https://cdn.jsdelivr.net/npm/typed.js@2.0.12", () => {
           new Typed(selector, { strings, typeSpeed, loop });
         });
       },
+
   
       // Initialize particles effect (lazy-load particles.js)
       initParticles: function (elementId) {
@@ -190,6 +169,22 @@
       vibrate: function (ms) {
         navigator.vibrate(ms);
       },
+      Toasify: function (params) {
+        // Lazy-load CSS
+        this.lazyLoadCSS("https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css");
+      
+        // Lazy-load JavaScript
+        this.lazyLoadScript("https://cdn.jsdelivr.net/npm/toastify-js", () => {
+          // Create a test toast notification
+          Toastify({
+            text: params.message || "This is a test notification!",
+            duration: params.duration || 3000, // Default duration: 3 seconds
+            gravity: params.gravity || "top", // Can be 'top' or 'bottom'
+            position: params.position || "right", // Can be 'left', 'center', or 'right'
+            backgroundColor: params.backgroundColor || "#4CAF50", // Default green color
+          }).showToast();
+        });
+      },
   
       // Leaflet map with user location
       initMap: function (mapId) {
@@ -271,4 +266,5 @@
       global.myLibrary = myLibrary;
     }
   })(this);
+    
   
