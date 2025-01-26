@@ -16,8 +16,9 @@
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/IT-Thamarai-demo/Dynamic-Feautures.js/demo.js"></script>
-  <script src="demo.js"></script>
+ 
   <title>MyLibrary.js - Demo Page</title>
+  <script src="demo.js"></script>
   <style>
     #map {
       height: 300px;
@@ -45,6 +46,7 @@
       border: none;
       border-radius: 5px;
     }
+
     button:hover {
       background-color: #0056b3;
     }
@@ -101,7 +103,8 @@
   <h2>Load Audio</h2>
   <p>Below is an example of loading an audio file dynamically:</p>
   <div id="audioContainer"></div>
-  <button id="showToastBtn">Toastify Button</button>
+  <div id="content" style="display: none;">
+
   <script>
     // Load styles and initialize features
     myLibrary.loadStyles();
@@ -114,8 +117,6 @@
       // Show device info
       myLibrary.displayDeviceInfo("#deviceInfo");
 
-
-      
       // Display battery status
       myLibrary.displayBatteryInfo("#batteryInfo");
 
@@ -143,17 +144,15 @@
 
       // Load audio dynamically
       myLibrary.loadAudio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", "audioContainer");
+
+     myLibrary.festivalIntro({
+    festivalName: "Happy Republic Day 🎉",
+    containerId: "content",
+    buttonText: "Skip Intro",
+    imageUrl: "https://it-thamarai-demo.github.io/Protfolio/IMG-20230719-WA0007.jpg",
+    message: "U Academy celebrates this Republic Day with you! 🎓",
+  });
     });
-    document.getElementById("showToastBtn").addEventListener("click", () => {
-        // Call the Toasify method
-        myLibrary.Toasify({
-          message: "This is a sample toast notification!",
-          duration: 5000, // Display the toast for 5 seconds
-          gravity: "top", // Display toast at the top
-          position: "right", // Display toast on the right
-          backgroundColor: "#FF5733" // Custom background color
-        });
-          })
   </script>
 </body>
 </html>
