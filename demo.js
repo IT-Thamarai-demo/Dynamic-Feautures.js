@@ -1,4 +1,4 @@
-(function (global) {
+\(function (_global) {
     // Main library object
     const myLibrary = {
       // Load default styles for the library
@@ -44,11 +44,6 @@
             max-width: 100%;
             border-radius: 8px;
           }
-         #greeting {
-          color: blue;
-           }
-          
-
         `;
         document.head.appendChild(style);
       },
@@ -60,20 +55,40 @@
         script.onload = callback;
         document.head.appendChild(script);
       },
-
+  
       lazyLoadCSS: function (href) {
         const link = document.createElement('link');
         link.rel = 'stylesheet';
         link.href = href;
         document.head.appendChild(link);
-     }, 
+      },
+  
+      // Launch confetti (lazy-load canvas-confetti)
+      launchConfetti: function () {
+        this.lazyLoadScript(
+          "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js",
+          () => {
+            const duration = 2000;
+            const animationEnd = Date.now() + duration;
+  
+            const interval = setInterval(() => {
+              if (Date.now() > animationEnd) clearInterval(interval);
+              confetti({
+                particleCount: 100,
+                spread: 360,
+                origin: { x: Math.random(), y: Math.random() },
+              });
+            }, 250);
+          }
+        );
+      },
+  
       // Initialize typing animation (lazy-load Typed.js)
       initTypingAnimation: function (selector, strings, typeSpeed = 70, loop = true) {
         this.lazyLoadScript("https://cdn.jsdelivr.net/npm/typed.js@2.0.12", () => {
           new Typed(selector, { strings, typeSpeed, loop });
         });
       },
-
   
       // Initialize particles effect (lazy-load particles.js)
       initParticles: function (elementId) {
@@ -169,102 +184,138 @@
       vibrate: function (ms) {
         navigator.vibrate(ms);
       },
-      Toasify: function (params) {
-        // Lazy-load CSS
-        this.lazyLoadCSS("https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css");
-      
-        // Lazy-load JavaScript
-        this.lazyLoadScript("https://cdn.jsdelivr.net/npm/toastify-js", () => {
-          // Create a test toast notification
-          Toastify({
-            text: params.message || "This is a test notification!",
-            duration: params.duration || 3000, // Default duration: 3 seconds
-            gravity: params.gravity || "top", // Can be 'top' or 'bottom'
-            position: params.position || "right", // Can be 'left', 'center', or 'right'
-            backgroundColor: params.backgroundColor || "#4CAF50", // Default green color
-          }).showToast();
-        });
-      },
   
-      // Leaflet map with user location
-      initMap: function (mapId) {
-        this.lazyLoadCSS("https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"); // Load Leaflet CSS
-        this.lazyLoadScript("https://unpkg.com/leaflet@1.9.4/dist/leaflet.js", () => {
-          const mapElement = document.getElementById(mapId);
-          if (mapElement) {
-            const map = L.map(mapId).setView([51.505, -0.09], 13); // Default location
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-              attribution: 'Map data © OpenStreetMap contributors',
-            }).addTo(map);
-  
-            if ('geolocation' in navigator) {
-              navigator.geolocation.getCurrentPosition((position) => {
-                const { latitude, longitude } = position.coords;
-                map.setView([latitude, longitude], 15);
-                L.marker([latitude, longitude])
-                  .addTo(map)
-                  .bindPopup('You are here! 📍')
-                  .openPopup();
-              });
-            }
-          }
-        });
-      },
-  
-      // Show/close dialog
-      openDialog: function (dialogId) {
-        const dialog = document.querySelector(dialogId);
-        if (dialog) dialog.showModal();
-      },
-      closeDialog: function (dialogId) {
-        const dialog = document.querySelector(dialogId);
-        if (dialog) dialog.close();
-      },
-  
-      // Handle visibility change
-      handleVisibilityChange: function () {
-        document.addEventListener('visibilitychange', function () {
-          if (!document.hidden) {
-            myLibrary.messege("Welcome back to the page!", "Glad to have you back 💓!", "IMG-20230719-WA0007.jpg");
-          }
-        });
-      },
-  
-      // Scroll to top
-      scrollToTop: function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      },
-  
-      // Load and play video
-      loadVideo: function (videoUrl, containerId) {
-        const container = document.getElementById(containerId);
-        if (container) {
-          const video = document.createElement('video');
-          video.src = videoUrl;
-          video.controls = true;
-          video.style.width = '100%';
-          container.appendChild(video);
+      endIntro: function (containerId) {
+        const introDiv = document.getElementById("festivalIntro");
+        if (introDiv) {
+          introDiv.style.opacity = "0";
+          setTimeout(() => {
+            introDiv.remove();
+            const content = document.getElementById(containerId);
+            if (content) content.style.display = "block";
+          }, 500);
         }
       },
   
-      // Load and play audio
-      loadAudio: function (audioUrl, containerId) {
-        const container = document.getElementById(containerId);
-        if (container) {
-          const audio = document.createElement('audio');
-          audio.src = audioUrl;
-          audio.controls = true;
-          container.appendChild(audio);
-        }
-      },
-    };
+      // Festival intro
+      festivalIntro: function ({
+        festivalName = "Happy Festival",
+        containerId = "content",
+        buttonText = "Skip Intro",
+        color = "#ff4500",
+        imageUrl = "",
+        message = "",
+      }) {
+        // Create festival intro container
+        const introDiv = document.createElement("div");
+        introDiv.style = `
+        position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+          backdrop-filter: blur(10px); /* Adds a blur effect */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds subtle shadow */
+          border: 1px solid rgba(255, 255, 255, 0.6); /* Optional border for better visibility */
+          border-radius: 15px; /* Adds rounded corners */
+          transition: opacity 0.5s ease, transform 0.3s ease; /* Smooth opacity and transform transitions */
+        
+        `;
+        introDiv.id = "festivalIntro";
   
-    // Export the library
-    if (typeof module !== "undefined" && module.exports) {
-      module.exports = myLibrary;
-    } else {
-      global.myLibrary = myLibrary;
+        // Add image
+        if (imageUrl) {
+          const image = document.createElement("img");
+          image.src = imageUrl.startsWith("http") ? imageUrl : `/${imageUrl}`;
+          image.alt = "Festival Image";
+          image.style = `
+            max-width: 50%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+          `;
+          introDiv.appendChild(image);
+        }
+  
+        // Add festival name
+        const h1 = document.createElement("h1");
+        h1.style = `
+          font-size: 2.5rem;
+          font-weight: bold;
+          text-align: center;
+          color: ${color};
+          margin-bottom: 10px;
+        `;
+        h1.id = "festivalTitle";
+  
+        // Add custom message
+        if (message) {
+          const p = document.createElement("p");
+          p.textContent = message;
+          p.style = `
+            font-size: 1.2rem;
+            color: #333;
+            text-align: center;
+            margin: 10px 0;
+          `;
+          introDiv.appendChild(p);
+        }
+  
+        // Add "Skip Intro" button
+        const button = document.createElement("button");
+        button.textContent = buttonText;
+        button.style = `
+          padding: 10px 20px;
+          font-size: 1rem;
+          color: white;
+          background-color: #007BFF;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-top: 20px;
+        `;
+        button.addEventListener("click", () => {
+          this.endIntro(containerId);
+        });
+  
+        introDiv.appendChild(h1);
+        introDiv.appendChild(button);
+        document.body.appendChild(introDiv);
+        console.log(introDiv)
+  
+        // Lazy-load confetti and launch effect
+        this.launchConfetti();
+  
+        // Lazy-load and initialize typing animation
+        this.lazyLoadScript("https://cdn.jsdelivr.net/npm/typed.js@2.0.12", () => {
+          new Typed("#festivalTitle", {
+            strings: [festivalName],
+            typeSpeed: 50,
+            showCursor: false,
+            onComplete: () => {
+              setTimeout(() => this.endIntro(containerId), 1000);
+            },
+          });
+        });
+      },
     }
+
+    // Initialize library on page load
+    window.onload = function () {
+      myLibrary.festivalIntro({
+        festivalName: "Happy Republic Day 🎉",
+        containerId: "content",
+        buttonText: "Skip Intro",
+        color: "#ff4500",
+        imageUrl: "https://www.hindustantimes.com/ht-img/img/2025/01/25/original/Happy_Republic_Day_2_1737788348490.jpg",
+        message: "U Academy celebrates this Republic Day with you! 🎓",
+      });
+    };
   })(this);
-    
   
