@@ -108,23 +108,37 @@
   ```javascript
   myLibrary.loadAudio("#audioId");
 
-### 13. **Toastify Js Integration**
+### 13. **Load Toastify Functionalities**
+  - **Functionality**: clike the show toast button and Triggers TOast with page top roght section .
+  - **Usage**:
+  ```javascript
+       document.getElementById("showToastBtn").addEventListener("click", () => {
+        // Call the Toasify method
+        myLibrary.Toasify({
+          message: "This is a sample toast notification!",
+          duration: 5000, // Display the toast for 5 seconds
+          gravity: "top", // Display toast at the top
+          position: "right", // Display toast on the right
+          backgroundColor: "#FF5733" // Custom background color
+        });
+       });
 
-Use the `Toasify` method to display toast notifications with [Toastify.js](https://github.com/apvarun/toastify-js).
-
-```javascript
-document.getElementById("showToastBtn").addEventListener("click", () => {
-  // Call the Toasify method
-  myLibrary.Toasify({
-    message: "This is a sample toast notification!",
-    duration: 5000, // Display the toast for 5 seconds
-    gravity: "top", // Display toast at the top
-    position: "right", // Display toast on the right
-    backgroundColor: "#FF5733" // Custom background color
+### 14. **Give Festival Intro in Users/Clinets integrate To our sites**
+  - **Functionality**: Based on the Festival u customize the div  .
+  - **Usage**:
+  ``` javascript 
+      myLibrary.festivalIntro({
+    festivalName: "Happy Republic Day 🎉",
+    containerId: "content",
+    buttonText: "Skip Intro",
+    imageUrl: "https://it-thamarai-demo.github.io/Protfolio/IMG-20230719-WA0007.jpg",
+    message: "U Academy celebrates this Republic Day with you! 🎓",
   });
-});
-```
+   
+
   
+
+
   
 ---
 
@@ -188,6 +202,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <!-- Confetti Button -->
 <button id="confettiButton">Launch Confetti</button>
+<!-- Click TO Show Toast -->
+<button id="showToastBtn">Show Toast </button>
+
+<!--Festival Intro Inialize Element  -->
+
+ <div id="content" style="display: none;">
+
+
+
 
 ```
 ---
@@ -216,13 +239,7 @@ Contributions are welcome! Submit issues or pull requests on the [GitHub reposit
 
 ## 📣 Stay Updated & Contribute
 
-![Author Image](https://avatars.githubusercontent.com/u/120456321?v=4)  
-**Author**: Thamarai Kannan  
-**GitHub**: [Thamarai Kannan](https://github.com/IT-Thamarai-demo)  
-
-![Contributor Image](https://avatars.githubusercontent.com/u/144410624?v=4)  
-**Contributor**: Ragul  
-**GitHub**: [Ragul](https://github.com/Ragul32111)
+We’d love for you to stay updated and contribute to the project! By watching this repository, you’ll receive notifications for all discussions, pull requests, and issues.
 
 ### How to Watch:
 1. Click the **Watch** button at the top right of the repository page.
