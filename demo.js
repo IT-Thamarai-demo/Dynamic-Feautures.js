@@ -1,4 +1,4 @@
-\(function (_global) {
+(function (_global) {
     // Main library object
     const myLibrary = {
       // Load default styles for the library
