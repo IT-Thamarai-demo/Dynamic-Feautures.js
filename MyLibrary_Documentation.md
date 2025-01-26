@@ -108,6 +108,38 @@
   ```javascript
   myLibrary.loadAudio("#audioId");
 
+### 13. **Load Toastify Functionalities**
+  - **Functionality**: clike the show toast button and Triggers TOast with page top roght section .
+  - **Usage**:
+  ```javascript
+       document.getElementById("showToastBtn").addEventListener("click", () => {
+        // Call the Toasify method
+        myLibrary.Toasify({
+          message: "This is a sample toast notification!",
+          duration: 5000, // Display the toast for 5 seconds
+          gravity: "top", // Display toast at the top
+          position: "right", // Display toast on the right
+          backgroundColor: "#FF5733" // Custom background color
+        });
+       })
+
+
+### 14. **Give Festival Intro in Users/Clinets integrate To our sites**
+  - **Functionality**: Based on the Festival u customize the div  .
+  - **Usage**:
+  ``` javascript 
+      myLibrary.festivalIntro({
+    festivalName: "Happy Republic Day 🎉",
+    containerId: "content",
+    buttonText: "Skip Intro",
+    imageUrl: "https://it-thamarai-demo.github.io/Protfolio/IMG-20230719-WA0007.jpg",
+    message: "U Academy celebrates this Republic Day with you! 🎓",
+  });
+   
+
+  
+
+
   
 ---
 
@@ -171,6 +203,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <!-- Confetti Button -->
 <button id="confettiButton">Launch Confetti</button>
+<!-- Click TO Show Toast -->
+<button id="showToastBtn">Show Toast </button>
+
+<!--Festival Intro Inialize Element  -->
+
+ <div id="content" style="display: none;">
+
+
+
 
 ```
 ---
@@ -195,6 +236,22 @@ Contributions are welcome! Submit issues or pull requests on the [GitHub reposit
 - **Leaflet.js**: Interactive maps
 - **Typed.js**: Typing animations
 - **Particles.js**: Particle effects
+
+
+## 📣 Stay Updated & Contribute
+
+We’d love for you to stay updated and contribute to the project! By watching this repository, you’ll receive notifications for all discussions, pull requests, and issues.
+
+### How to Watch:
+1. Click the **Watch** button at the top right of the repository page.
+2. Select **All Activity** to get notifications for all updates or **Participating** to only get notified when you are involved.
+
+### Why Watch?
+- **Be notified** when new issues, pull requests, or discussions are created.
+- **Contribute** by knowing when help is needed, including "good first issues" and other tasks.
+- **Stay in the loop** about the latest project updates, releases, and announcements.
+
+We appreciate your interest and contributions! 🙌
 
 ---
 
