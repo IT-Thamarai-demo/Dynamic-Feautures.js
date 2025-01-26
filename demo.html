@@ -5,19 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/gh/IT-Thamarai-demo/Dynamic-Feautures.js/demo.js"></script>
-
+   
 
 
 </head>
 <body>
      <h1 id="greeting">hai</h1>
      <div id="greeting"></div>
+     <div id="dimensions"></div>
      <button onclick="myLibrary.launchConfetti()">Launch Confetti 🎉</button>
+     <div id="batteryStatus"></div>
+     <div id="map" style="height: 300px; width: 100%;"></div>
 
      
     <script>
-             myLibrary.messege("hia")
-             myLibrary.displayGreeting("#greeting");
+             myLibrary.displayDimensions("#dimensions");
+             myLibrary.displayBatteryInfo("#batteryStatus");
+           myLibrary.initMap("map");
+           
+
     </script>
 </body>
 </html>
